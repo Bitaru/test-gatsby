@@ -1,3 +1,5 @@
+require('dotenv').config()
+
 module.exports = {
   siteMetadata: {
     title: `Gatsby Default Starter`,
@@ -30,6 +32,19 @@ module.exports = {
         display: `minimal-ui`,
         icon: `src/images/gatsby-icon.png`, // This path is relative to the root of the site.
       },
+    },
+    {
+      resolve: `gatsby-source-cosmicjs`,
+      options: {
+        bucketSlug: process.env.COSMIC_BUCKET, // Get this value in Bucket > Settings
+        objectTypes: ['posts','settings'],
+        // If you have enabled read_key to fetch data (optional).
+        apiAccess: {
+          read_key: process.env.COSMIC_READ_KEY, // Get this value in Bucket > Settings
+        },
+        localMedia: true, // Download media locally for gatsby image (optional)
+        limit: 1000, // The number of Objects to fetch on each request (optional)
+      }
     },
     // this (optional) plugin enables Progressive Web App + Offline functionality
     // To learn more, visit: https://gatsby.dev/offline
