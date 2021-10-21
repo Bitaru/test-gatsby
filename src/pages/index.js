@@ -9,6 +9,7 @@ const Index = ({ data }) => {
   return (
     <Layout>
       <Seo title="Home" />
+      <span>other branch</span>
       <h3>Posts from Cosmic:</h3>
       {
         posts.map(({ node }) =>
